@@ -5,44 +5,42 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Loading</title>
 	<link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://use.fontawesome.com/38ac67d2bb.js"></script>
 	<script type="text/javascript">
      window.onbeforeunload = function() { return "Are you sure you want to leave?"; }
 	</script>
-  <script type="text/javascript">
-    function is_touch_device() {
-      return (('ontouchstart' in window)
-        || (navigator.MaxTouchPoints > 0)
-        || (navigator.msMaxTouchPoints > 0));
-    }
- 
-    if (!is_touch_device()) {
-      document.getElementById('btn1').style.display='none';
-    }
-  </script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
   <div class="btns">
-    <button class="btn1" type="button">
+    <div class="tooltip"><button class="btn1" type="button">
       <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
-    </button>
-    <button class="btn2" type="button">
+      </button><span class="tooltiptext">Back to normal</span>
+    </div>
+    <div class="tooltip"><button class="btn2" type="button">
       <i class="fa fa-i-cursor" aria-hidden="true"></i>
-    </button>
-    <button class="btn3" type="button">
+      </button><span class="tooltiptext">Does it load indicator</span>
+    </div>
+    <div class="tooltip"><button class="btn3" type="button">
       <i class="fa fa-spinner fa-pulse"></i>
-      <span class="sr-only">Loading...</span>
-    </button>
+      </button><span class="tooltiptext">Speed up loading</span>
+    </div>
+    <audio id="myAudio" loop><source src="music/ElevatorMusic.mp3" type="audio/mpeg"></audio>
+    <div class="tooltip"><button class="btn4" type="button" onclick="aud_play_pause()">
+      <i class="fa fa-music" aria-hidden="true"></i>
+    </button><span class="tooltiptext">Elavator music</span>
+    </div>
   </div>
-  <p>Back to normal</p>
-  <p>Does it load indicator</p>
-  <p>Speed up loading</p>
+  <content>
     <div class="bar-percentage" data-percentage="99"></div>
     <div id="loading-border"></div>
-	<div id="loading-box">
-		<div id="loading-bar"></div>
-	</div>
+  	<div id="loading-box">
+  	 <div id="loading-bar"></div>
+  	</div>
+    <h1>hfjsd fshbdfkhsdbfkjsdbhif shdfs</h1>
+  </content>
 </body>
 <script>
   $(".btn1").click(function() { $("*").css('cursor', 'auto'); });
@@ -50,23 +48,33 @@
   $(".btn3").click(function() { $("*").css('cursor', 'wait'); });
 </script>
 <script>
-$('.bar-percentage[data-percentage]').each(function () {
-  var progress = $(this);
-  var percentage = Math.ceil($(this).attr('data-percentage'));
-  $({countNum: 0}).animate({countNum: percentage}, {
-  	//duration in ms 24h=86400000ms
-    duration: 86400000,
-    easing: 'linear',
-    step: function() {
-    var pct = '';
-    if(percentage == 0){
-      pct = Math.floor(this.countNum) + '%';
-    }else{
-      pct = Math.floor(this.countNum+1) + '%';
+  function aud_play_pause() {
+    var myAudio = document.getElementById("myAudio");
+    if (myAudio.paused) {
+      myAudio.play();
+    } else {
+      myAudio.pause(); document.getElementById('myAudio').currentTime = 0;
     }
-    progress.text(pct)
-    }
+  }
+</script>
+<script>
+  $('.bar-percentage[data-percentage]').each(function () {
+    var progress = $(this);
+    var percentage = Math.ceil($(this).attr('data-percentage'));
+    $({countNum: 0}).animate({countNum: percentage}, {
+    	//duration in ms 24h=86400000ms
+      duration: 10000,
+      easing: 'linear',
+      step: function() {
+      var pct = '';
+      if(percentage == 0){
+        pct = Math.floor(this.countNum) + '%';
+      }else{
+        pct = Math.floor(this.countNum+1) + '%';
+      }
+      progress.text(pct)
+      }
+    });
   });
-});
 </script>
 </html>
