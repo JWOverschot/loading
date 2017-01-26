@@ -8,9 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://use.fontawesome.com/38ac67d2bb.js"></script>
-	<script type="text/javascript">
-     window.onbeforeunload = function() { return "Are you sure you want to leave?"; }
-	</script>
+  <script src="script.js" type="text/javascript"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
@@ -34,7 +32,7 @@
     </div>
   </div>
   <content>
-    <div class="bar-percentage" data-percentage="99"></div>
+    <div id="bar-percentage"></div>
     <div id="loading-border"></div>
   	<div id="loading-box">
   	 <div id="loading-bar"></div>
@@ -46,35 +44,5 @@
   $(".btn1").click(function() { $("*").css('cursor', 'auto'); });
   $(".btn2").click(function() { $("*").css('cursor', 'text'); });
   $(".btn3").click(function() { $("*").css('cursor', 'wait'); });
-</script>
-<script>
-  function aud_play_pause() {
-    var myAudio = document.getElementById("myAudio");
-    if (myAudio.paused) {
-      myAudio.play();
-    } else {
-      myAudio.pause(); document.getElementById('myAudio').currentTime = 0;
-    }
-  }
-</script>
-<script>
-  $('.bar-percentage[data-percentage]').each(function () {
-    var progress = $(this);
-    var percentage = Math.ceil($(this).attr('data-percentage'));
-    $({countNum: 0}).animate({countNum: percentage}, {
-    	//duration in ms 24h=86400000ms
-      duration: 10000,
-      easing: 'linear',
-      step: function() {
-      var pct = '';
-      if(percentage == 0){
-        pct = Math.floor(this.countNum) + '%';
-      }else{
-        pct = Math.floor(this.countNum+1) + '%';
-      }
-      progress.text(pct)
-      }
-    });
-  });
 </script>
 </html>
