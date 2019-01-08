@@ -92,7 +92,7 @@ content{
 	background-color: #0080ff;
 	animation-name: loading;
 	/*24h=86400s*/
-	animation-duration: 10s;
+	animation-duration: 86400s;
 	width: 99%;
 	z-index: 2;
 }
@@ -113,13 +113,12 @@ content{
 #bar-percentage {
 	color: white;
 	font-size: 10em;
-	position: relative;
-	left: 10%;
+	padding-left: 10%;
 }
 
 @keyframes loading {
 	0% {width: 0%;}
-	1% {width: 20%;}
+	0.1% {width: 20%;}
 	50% {width: 50%;}
 	80% {width: 80%;}
 	98% {width: 97%}

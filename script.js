@@ -21,8 +21,9 @@ function barPercentage(el,styleProp){ //from ppk's quirksmode
 }
 
 setInterval( function() {
-	var perc = barPercentage('loading-bar','width').replace("px","");
-	var res = Math.round(parseFloat(perc)/9);
-	document.getElementById("bar-percentage").innerHTML = res + "%";
+	var perc = parseFloat(barPercentage('loading-bar','width').replace("px",""));
+	var totalWidth = parseFloat(barPercentage('loading-box','width').replace("px",""));
+	var res = Math.round((perc / totalWidth) * 100);
 
+	document.getElementById("bar-percentage").innerHTML = res + "%";
 }, 0);

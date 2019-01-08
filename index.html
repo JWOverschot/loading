@@ -28,7 +28,7 @@
     <audio id="myAudio" loop><source src="music/ElevatorMusic.mp3" type="audio/mpeg"></audio>
     <div class="tooltip"><button class="btn4" type="button" onclick="aud_play_pause()">
       <i class="fa fa-music" aria-hidden="true"></i>
-    </button><span class="tooltiptext">Elavator music</span>
+    </button><span class="tooltiptext">Elevator music</span>
     </div>
   </div>
   <content>
@@ -37,12 +37,13 @@
   	<div id="loading-box">
   	 <div id="loading-bar"></div>
   	</div>
-    <h1>hfjsd fshbdfkhsdbfkjsdbhif shdfs</h1>
+    <!-- <h1>hfjsd fshbdfkhsdbfkjsdbhif shdfs</h1> -->
   </content>
 </body>
 <script>
   $(".btn1").click(function() { $("*").css('cursor', 'auto'); });
   $(".btn2").click(function() { $("*").css('cursor', 'text'); });
   $(".btn3").click(function() { $("*").css('cursor', 'wait'); });
+  document.getElementById("myAudio").volume = 0.6;
 </script>
 </html>
