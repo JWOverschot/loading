@@ -114,6 +114,8 @@ content{
 	color: white;
 	font-size: 10em;
 	padding-left: 10%;
+	text-shadow: 8px 8px 0px #0000008c;
+    	font-weight: bold;
 }
 
 @keyframes loading {
